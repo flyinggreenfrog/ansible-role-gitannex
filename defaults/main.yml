@@ -1,0 +1,8 @@
+---
+gitannex__checks_enabled: True
+gitannex__checks_quiet: True
+gitannex__repositories_manage: True
+gitannex__repositories_state: 'present'
+gitannex__repositories_enabled: True
+gitannex__packages_manage: True
+gitannex__packages_state: 'present'

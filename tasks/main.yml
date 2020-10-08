@@ -1,0 +1,19 @@
+---
+- name: 'OS family specific variables - ensure included'
+  tags: 'gitannex'
+  include_vars: '{{ ansible_os_family }}.yml'
+
+- name: 'checks tasks - ensure imported'
+  tags: 'gitannex'
+  import_tasks: 'checks.yml'
+  when: gitannex__checks_enabled
+
+- name: 'repositories tasks - ensure imported'
+  tags: ['gitannex', 'online']
+  import_tasks: 'repositories.yml'
+  when: gitannex__repositories_manage
+
+- name: 'packages tasks - ensure imported'
+  tags: ['gitannex', 'online']
+  import_tasks: 'packages.yml'
+  when: gitannex__packages_manage

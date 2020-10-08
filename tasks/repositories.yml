@@ -1,0 +1,20 @@
+---
+- name: 'zypper repositories - ensure configured'
+  zypper_repository:
+    name: 'devel_languages_haskell'
+    description: 'Haskell Development Project for openSUSE:Factory
+      (openSUSE_Leap_{{ item }})'
+    state: '{{ gitannex__repositories_state }}'
+    enabled: '{{ gitannex__repositories_enabled }}'
+    repo: "http://download.opensuse.org/repositories/devel:/languages:/haskell\
+      /openSUSE_Leap_{{ item }}"
+    auto_import_keys: True
+  loop:
+    - '15.2'
+  loop_control:
+    label: '{{ item }} - ensure
+      {{ gitannex__repositories_state }} and
+      {{ gitannex__repositories_enabled | ternary("enabled", "disabled") }}'
+  when:
+    - ansible_distribution == 'openSUSE Leap'
+    - ansible_distribution_version == item

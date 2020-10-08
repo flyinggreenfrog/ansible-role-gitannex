@@ -1,0 +1,5 @@
+---
+- name: 'packages - ensure state'
+  package:
+    name: '{{ gitannex__packages }}'
+    state: '{{ gitannex__packages_state }}'
