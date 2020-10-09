@@ -9,12 +9,12 @@
     repo: "http://download.opensuse.org/repositories/devel:/languages:/haskell\
       /openSUSE_Leap_{{ item }}"
     auto_import_keys: True
+  loop_control:
+    label: "{{ item }} - ensure
+      {{ gitannex__repositories_state }} and
+      {{ gitannex__repositories_enabled | ternary('enabled', 'disabled') }}"
   loop:
     - '15.2'
-  loop_control:
-    label: '{{ item }} - ensure
-      {{ gitannex__repositories_state }} and
-      {{ gitannex__repositories_enabled | ternary("enabled", "disabled") }}'
   when:
     - ansible_distribution == 'openSUSE Leap'
     - ansible_distribution_version == item

@@ -1,0 +1,21 @@
+---
+- name: 'variables - ensure validated'
+  assert:
+    that:
+      - "lookup('vars', item.a, defaults='NOT DEFINED') {{ item.b }}"
+    fail_msg: "{{ item.a }}
+      == '{{ lookup('vars', item.a, defaults='NOT DEFINED') }}"
+    quiet: True
+  loop_control:
+    label: '{{ item.a }}'
+  loop:
+    - a: 'gitannex__repositories_manage'
+      b: 'is boolean'
+    - a: 'gitannex__repositories_state'
+      b: "in ['present', 'absent']"
+    - a: 'gitannex__repositories_enabled'
+      b: 'is boolean'
+    - a: 'gitannex__packages_manage'
+      b: 'is boolean'
+    - a: 'gitannex__packages_state'
+      b: "in ['present', 'absent']"

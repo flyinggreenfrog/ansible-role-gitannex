@@ -3,10 +3,9 @@
   tags: 'gitannex'
   include_vars: '{{ ansible_os_family }}.yml'
 
-- name: 'checks tasks - ensure imported'
+- name: 'assert tasks - ensure imported'
   tags: 'gitannex'
-  import_tasks: 'checks.yml'
-  when: gitannex__checks_enabled
+  import_tasks: 'assert.yml'
 
 - name: 'repositories tasks - ensure imported'
   tags: ['gitannex', 'online']
