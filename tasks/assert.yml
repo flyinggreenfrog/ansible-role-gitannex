@@ -4,7 +4,7 @@
     that:
       - "lookup('vars', item.a, defaults='NOT DEFINED') {{ item.b }}"
     fail_msg: "{{ item.a }}
-      == '{{ lookup('vars', item.a, defaults='NOT DEFINED') }}"
+      == '{{ lookup('vars', item.a, defaults='NOT DEFINED') }}'"
     quiet: True
   loop_control:
     label: '{{ item.a }}'
