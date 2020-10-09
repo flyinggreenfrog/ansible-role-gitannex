@@ -19,3 +19,5 @@
       b: 'is boolean'
     - a: 'gitannex__packages_state'
       b: "in ['present', 'absent']"
+    - a: 'gitannex__packages'
+      b: 'is sequence'
