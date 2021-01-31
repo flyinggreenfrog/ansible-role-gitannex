@@ -1,0 +1,29 @@
+---
+- block:
+    - name: 'validate variables'
+      assert:
+        that:
+          - gitannex__repositories_manage is boolean
+          - gitannex__repositories_state in ['present', 'absent']
+          - gitannex__repositories_enabled is boolean
+          - gitannex__packages_manage is boolean
+          - gitannex__packages_state in ['present', 'absent']
+          - gitannex__packages is not string and
+            gitannex__packages is not mapping and
+            gitannex__packages is sequence
+        quiet: true
+  rescue:
+    - name: 'output variable values'
+      debug:
+        msg: "{{ lookup('vars', item) }}"
+      loop:
+        - gitannex__repositories_manage
+        - gitannex__repositories_state
+        - gitannex__repositories_enabled
+        - gitannex__packages_manage
+        - gitannex__packages_state
+        - gitannex__packages
+
+    - name: 'fail -> variable validation errors'
+      fail:
+        msg: 'check variables in last 2 tasks'

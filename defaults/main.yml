@@ -1,6 +1,6 @@
 ---
-gitannex__repositories_manage: True
+gitannex__repositories_manage: true
 gitannex__repositories_state: 'present'
-gitannex__repositories_enabled: True
-gitannex__packages_manage: True
+gitannex__repositories_enabled: true
+gitannex__packages_manage: true
 gitannex__packages_state: 'present'
